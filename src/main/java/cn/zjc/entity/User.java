@@ -17,8 +17,9 @@ import java.util.Date;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "ID")
     private Integer id;
+    @Column(name = "USER_ID")
+    private Integer userId;
     @Column(name = "NAME")
     private String name;
     @Column(name = "BIRTH")
@@ -29,8 +30,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String name, Date birth, String email) {
-        this.id = id;
+    public User(Integer userId, String name, Date birth, String email) {
+        this.userId = userId;
         this.name = name;
         this.birth = birth;
         this.email = email;
@@ -68,13 +69,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birth=" + birth +
-                ", email='" + email + '\'' +
-                '}';
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

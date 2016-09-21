@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zjc.dao.MutualEvaluationMapper">
+
+    <insert id="insertCrossEvaluation" parameterType="java.util.List">
+        INSERT INTO TB_AT_USER (USER_ID, NAME, BIRTH, EMAIL) VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.userId:INTEGER},
+            #{item.name:VARCHAR},
+            #{item.birth},
+            #{item.email:VARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>
