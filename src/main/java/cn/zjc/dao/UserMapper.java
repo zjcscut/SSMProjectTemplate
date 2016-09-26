@@ -19,4 +19,6 @@ public interface UserMapper extends AbstractCustomMapper<User> {
 
     List<User> selectAll();
 
+	void batchInsert(List<User> list);
+
 }

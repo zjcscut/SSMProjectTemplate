@@ -1,9 +1,6 @@
 package cn.zjc.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,8 +14,9 @@ import java.util.Date;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "ID")
     private Integer id;
+	@Column
+	private Integer userId;
     @Column(name = "NAME")
     private String name;
     @Column(name = "BIRTH")
@@ -29,12 +27,6 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String name, Date birth, String email) {
-        this.id = id;
-        this.name = name;
-        this.birth = birth;
-        this.email = email;
-    }
 
     public Integer getId() {
         return id;
@@ -68,13 +60,22 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birth=" + birth +
-                ", email='" + email + '\'' +
-                '}';
-    }
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", userId=" + userId +
+				", name='" + name + '\'' +
+				", birth=" + birth +
+				", email='" + email + '\'' +
+				'}';
+	}
 }

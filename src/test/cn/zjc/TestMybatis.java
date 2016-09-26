@@ -29,4 +29,9 @@ public class TestMybatis extends Basic {
         List<User> users = userService.findAllUser(1, 2).getList();
         assertEquals(2,users.size());
     }
+
+    @Test
+	public void Test3(){
+		userService.batchInsertUsers();
+	}
 }

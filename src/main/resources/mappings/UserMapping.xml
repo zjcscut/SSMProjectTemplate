@@ -4,6 +4,7 @@
 
     <resultMap id="UserEntityMap" type="cn.zjc.entity.User">
         <id property="id" column="ID"/>
+        <result property="userId" column="USER_ID"/>
         <result property="name" column="NAME"/>
         <result property="birth" column="BIRTH"/>
         <result property="email" column="EMAIL"/>
@@ -11,18 +12,36 @@
 
     <select id="selectById" parameterType="int" resultType="cn.zjc.entity.User">
         <![CDATA[
+
+
         SELECT *
         FROM TB_AT_USER u
         WHERE u.ID = #{id,jdbcType=INTEGER}
+
+
         ]]>
     </select>
 
     <select id="selectAll" resultType="cn.zjc.entity.User">
         <![CDATA[
+
+
         SELECT *
         FROM TB_AT_USER u
         WHERE u.ID > 0
+
+
         ]]>
     </select>
-    
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT into TB_AT_USER(NAME,USER_ID,EMAIL,BIRTH)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},#{item.userId},#{item.email},#{item.birth}
+            )
+        </foreach>
+    </insert>
+
 </mapper>
